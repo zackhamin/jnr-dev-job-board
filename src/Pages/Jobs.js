@@ -17,15 +17,16 @@ function Jobs() {
 
 useEffect(() => {
     const fetchJobs = async () => {
-        const results = await axios.get('http://localhost:9000/users')
+        const results = await axios.get('http://localhost:9000/jobs')
         const jobData = results.data.results 
         const jobArray = jobData.map(element => {
             const jobObjectNew = {
                 jobTitle: element.jobTitle,
                 jobLocation: element.locationName,
-                jobSalary: element.minimumSalary ? element.minimumSalary : 0,
+                jobSalary: element.minimumSalary ? element.minimumSalary : "Apply for more info",
                 jobDate: element.date,
                 jobLink: element.jobUrl,
+                jobDescription: element.jobDescription ? element.jobDescription : 'Click apply for more info '
             }
             return jobObjectNew
         })
@@ -35,7 +36,7 @@ useEffect(() => {
     }, [])
 
     return (
-        <div style={{display:'flex', flexDirection:'column',width:'100%',minHeight:'100%', border:'4px solid', justifyContent:'center', alignItems:'center'}}>
+        <div style={{display:'flex', flexDirection:'column',width:'100%',minHeight:'100%', justifyContent:'center', alignItems:'center',backgroundColor:'whitesmoke'}}>
             <div style={{display:'flex', width:'78%',height:50, justifyContent:'center'}}>
             </div>
             <div style={{display:'flex', flexDirection:'row', flexWrap:'wrap',width:'78%',minHeight:'100%', flex:'33.333333%',justifyContent:'center', alignContent:'center'}}>

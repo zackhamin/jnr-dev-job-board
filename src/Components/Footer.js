@@ -2,14 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 
-
-function menu() {
-
-
-
-
+function Footer() {
     return (
-                <div style={{display:'flex', flexDirection:'row',alignItems:'center', justifyContent:'center' ,width:'100%', height:60,marginBottom:25}}>
+        <div style={{display:'flex', flexDirection:'row',alignItems:'center', justifyContent:'center' ,width:'100%', height:60,marginBottom:25}}>
         <Link to="/" style={{textDecoration:'none'}}>
         <Button>
          <strong style={{color:'black'}}>Home</strong>
@@ -32,4 +27,4 @@ function menu() {
     )
 }
 
-export default menu
+export default Footer
