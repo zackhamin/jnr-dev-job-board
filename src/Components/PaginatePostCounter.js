@@ -31,7 +31,7 @@ const PaginatePostCounter = ({ jobsPerPage, totalPosts, paginate }) => {
             {" "}
             {/* <a
             onClick={() => paginate(number)}
-            href="#"
+            href="!#"
             className="page-link"
             style={{ textDecoration: "none", color: "white" }}
           > */}

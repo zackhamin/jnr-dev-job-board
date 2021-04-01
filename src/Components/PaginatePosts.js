@@ -1,7 +1,7 @@
 import React from "react";
 import JobCard from "./JobCard";
 
-export default function PaginatePosts({ jobs, loading }) {
+export default function PaginatePosts({ jobs, loading, chooseLocation }) {
   if (loading) {
     return <h2>Loading...</h2>;
   }
