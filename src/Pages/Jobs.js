@@ -2,27 +2,26 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import PaginatePosts from "../Components/PaginatePosts";
 import PaginatePostCounter from "../Components/PaginatePostCounter";
-import {
-  FormControl,
-  Paper,
-  InputLabel,
-  Select,
-  MenuItem,
-} from "@material-ui/core";
+import { FormControl, InputLabel, Select, MenuItem } from "@material-ui/core";
 
 function Jobs() {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState();
   const [currentPage, setCurrentPage] = useState(1);
-  const [jobsPerPage, setJobsPerPage] = useState(15);
+  const [jobsPerPage] = useState(15);
   const [locations, setLocations] = useState();
-  const [locationInput, setLocationInput] = useState();
+  const [locationInput] = useState();
+
+  const indexOfLastPost = currentPage * jobsPerPage;
+  const indexOfFirstPost = indexOfLastPost - jobsPerPage;
+  const currentJob = jobs.slice(indexOfFirstPost, indexOfLastPost);
 
   useEffect(() => {
     const fetchJobs = async () => {
       setLoading(true);
       const results = await axios.get("http://localhost:9000/jobs");
       const jobData = results.data.results;
+
       const jobArray = jobData.map(element => {
         const jobObjectNew = {
           jobTitle: element.jobTitle,
@@ -41,12 +40,12 @@ function Jobs() {
       setJobs(jobArray);
       setLoading(false);
     };
+
     fetchJobs();
   }, []);
 
   useEffect(() => {
     jobLocation(jobs);
-    console.log("Executed", jobs);
   }, [jobs]);
 
   const jobLocation = jobs => {
@@ -64,14 +63,11 @@ function Jobs() {
     setLocations(uniqueLocations);
   };
 
-  const indexOfLastPost = currentPage * jobsPerPage;
-  const indexOfFirstPost = indexOfLastPost - jobsPerPage;
-  const currentJob = jobs.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = number => {
     setCurrentPage(number);
   };
+
   const handleChange = e => {
-    console.log("fired");
     const newLocation = e.target.value;
     const setNewLocation = jobs.filter(job => job.jobLocation === newLocation);
     setJobs(setNewLocation);
@@ -110,32 +106,14 @@ function Jobs() {
               locations.map(location => {
                 return (
                   <MenuItem value={location.location}>
-                    {" "}
                     {location.location}
                   </MenuItem>
                 );
               })}
           </Select>
         </FormControl>
+        <span style={{ marginLeft: 40 }}>Page: {currentPage}</span>
       </div>
-      {/* <Paper
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          width: 200,
-          height: 800,
-        }}
-      >
-        <strong>Location:</strong>
-        {location &&
-          location.map(locations => {
-            return (
-              <p style={{ padding: 5, lineHeight: 0.1 }}>
-                {locations.location}
-              </p>
-            );
-          })}
-      </Paper> */}
       <div
         style={{
           display: "flex",

@@ -1,8 +1,4 @@
 import React from "react";
-import Jobs from "./Jobs";
-import SearchTwoToneIcon from "@material-ui/icons/SearchTwoTone";
-import laptopMan from "../images/laptopMan.png";
-import iconRight from "../images/rightArrow.png";
 import womanCoding from "../images/woman-coding.png";
 import jobSearch from "../images/job-search.png";
 import interview from "../images/interview.png";
@@ -37,9 +33,7 @@ function Home() {
         }}
       >
         <h1 style={{ padding: 15 }}>You learn to code, we post the jobs.</h1>
-        <strong style={{ color: "whitesmoke", padding: 15 }}>
-          The largest collection of Junior Developer roles on the web
-        </strong>
+        <strong style={{ color: "whitesmoke", padding: 15 }}></strong>
       </Paper>
 
       <div

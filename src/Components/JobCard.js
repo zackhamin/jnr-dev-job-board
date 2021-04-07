@@ -18,7 +18,6 @@ import {
   TwitterShareButton,
   TwitterIcon,
 } from "react-share";
-import days from "./DateToDay";
 
 function JobCard(props) {
   const {
@@ -29,8 +28,8 @@ function JobCard(props) {
     jobLink,
     jobDescription,
   } = props.content;
-  const [expanded, setExpanded] = useState(false);
   const [open, setOpen] = useState(false);
+  const [raiseShadow, setRaiseShadow] = useState(false);
 
   const useStyles = makeStyles(theme => ({
     card: {
@@ -38,7 +37,15 @@ function JobCard(props) {
       minHeight: 200,
       width: 300,
       margin: 15,
-      boxShadow: "1px 1px 1px 1px #46a7d5",
+      boxShadow: "1px 1px #46a7d5",
+      lineHeight: 1.3,
+    },
+    cardRaised: {
+      borderRadius: 10,
+      minHeight: 200,
+      width: 300,
+      margin: 15,
+      boxShadow: "4px 4px 4px 4px #46a7d5",
       lineHeight: 1.3,
     },
     expand: {
@@ -67,10 +74,6 @@ function JobCard(props) {
 
   const classes = useStyles();
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
-
   const handleOpen = () => {
     setOpen(true);
   };
@@ -79,9 +82,19 @@ function JobCard(props) {
     setOpen(false);
   };
 
+  const mouseOver = () => {
+    return setRaiseShadow(true);
+  };
+
+  const mouseLeave = () => {
+    return setRaiseShadow(false);
+  };
+
   return (
     <Card
-      className={classes.card}
+      onMouseEnter={() => mouseOver()}
+      onMouseLeave={() => mouseLeave()}
+      className={raiseShadow ? classes.cardRaised : classes.card}
       style={{ display: "flex", justifyContent: "space-between" }}
     >
       <CardContent
@@ -127,7 +140,6 @@ function JobCard(props) {
           </Modal>
           <div>
             <CardActions>
-              {" "}
               <Button href={jobLink} target="_blank" color="primary">
                 Apply
               </Button>

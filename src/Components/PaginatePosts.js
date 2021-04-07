@@ -1,9 +1,10 @@
 import React from "react";
 import JobCard from "./JobCard";
+import GridLoader from "react-spinners/PacmanLoader";
 
-export default function PaginatePosts({ jobs, loading, chooseLocation }) {
+export default function PaginatePosts({ jobs, loading }) {
   if (loading) {
-    return <h2>Loading...</h2>;
+    return <GridLoader color={"#46a7d5"} loading={loading} size={25} />;
   }
 
   return (

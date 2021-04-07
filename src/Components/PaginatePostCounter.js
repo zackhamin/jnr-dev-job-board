@@ -1,5 +1,5 @@
 import { Button } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 
 const PaginatePostCounter = ({ jobsPerPage, totalPosts, paginate }) => {
   const pageNumbers = [];
@@ -7,6 +7,11 @@ const PaginatePostCounter = ({ jobsPerPage, totalPosts, paginate }) => {
   for (let i = 1; i <= Math.ceil(totalPosts / jobsPerPage); i++) {
     pageNumbers.push(i);
   }
+
+  const paginateNumber = number => {
+    paginate(number);
+    console.log(number);
+  };
 
   return (
     <div
@@ -21,22 +26,14 @@ const PaginatePostCounter = ({ jobsPerPage, totalPosts, paginate }) => {
     >
       {pageNumbers.map(number => (
         <div>
-          {" "}
           <Button
+            key={number}
             style={{ margin: 5 }}
             variant="contained"
-            color="primary"
-            onClick={() => paginate(number)}
+            color={"primary"}
+            onClick={() => paginateNumber(number)}
           >
-            {" "}
-            {/* <a
-            onClick={() => paginate(number)}
-            href="!#"
-            className="page-link"
-            style={{ textDecoration: "none", color: "white" }}
-          > */}
             {number}
-            {/* </a> */}
           </Button>
         </div>
       ))}
