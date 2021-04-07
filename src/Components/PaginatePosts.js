@@ -1,6 +1,6 @@
 import React from "react";
 import JobCard from "./JobCard";
-import GridLoader from "react-spinners/PacmanLoader";
+import GridLoader from "react-spinners/RotateLoader";
 
 export default function PaginatePosts({ jobs, loading }) {
   if (loading) {
