@@ -3,21 +3,12 @@ import {
   Button,
   Card,
   CardContent,
-  Grid,
   makeStyles,
-  Box,
   CardActions,
-  CardMedia,
 } from "@material-ui/core";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
-import {
-  WhatsappIcon,
-  WhatsappShareButton,
-  TwitterShareButton,
-  TwitterIcon,
-} from "react-share";
 
 function JobCard(props) {
   const {
@@ -145,23 +136,6 @@ function JobCard(props) {
               </Button>
             </CardActions>
           </div>
-
-          <TwitterShareButton
-            url={"https://juniordeveloper.careers"}
-            quote={"Another great junior developer job!"}
-            hashtag="#juniordeveloper.careers"
-            className={classes.socialMediaButton}
-          >
-            <TwitterIcon size={36} />
-          </TwitterShareButton>
-          <WhatsappShareButton
-            url={"https://juniordeveloper.careers"}
-            quote={"Another great junior developer job!"}
-            hashtag="#juniordeveloper.careers"
-            className={classes.socialMediaButton}
-          >
-            <WhatsappIcon size={36} />
-          </WhatsappShareButton>
         </div>
       </CardContent>
     </Card>

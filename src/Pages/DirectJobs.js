@@ -4,7 +4,7 @@ import PaginatePosts from "../Components/jobs/PaginatePosts";
 import PaginatePostCounter from "../Components/jobs/PaginatePostCounter";
 import { FormControl, InputLabel, Select, MenuItem } from "@material-ui/core";
 
-function Jobs() {
+function DirectJobs() {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState();
   const [currentPage, setCurrentPage] = useState(1);
@@ -124,7 +124,7 @@ function Jobs() {
           backgroundColor: "whitesmoke",
         }}
       >
-        Jobs scraped from available APIs
+        Jobs posted directly from companies
       </div>
       <div
         style={{
@@ -149,4 +149,4 @@ function Jobs() {
   );
 }
 
-export default Jobs;
+export default DirectJobs;

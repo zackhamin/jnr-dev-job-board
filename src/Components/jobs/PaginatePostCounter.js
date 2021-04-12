@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 const PaginatePostCounter = ({ jobsPerPage, totalPosts, paginate }) => {
   const pageNumbers = [];
+  const [clickButtonColor, setClickButtonColor] = useState(0);
 
   for (let i = 1; i <= Math.ceil(totalPosts / jobsPerPage); i++) {
     pageNumbers.push(i);
@@ -11,6 +12,10 @@ const PaginatePostCounter = ({ jobsPerPage, totalPosts, paginate }) => {
   const paginateNumber = number => {
     paginate(number);
     console.log(number);
+  };
+
+  const buttonColor = number => {
+    return setClickButtonColor(true);
   };
 
   return (
@@ -30,8 +35,11 @@ const PaginatePostCounter = ({ jobsPerPage, totalPosts, paginate }) => {
             key={number}
             style={{ margin: 5 }}
             variant="contained"
-            color={"primary"}
-            onClick={() => paginateNumber(number)}
+            color={clickButtonColor ? "primary" : "secondary"}
+            onClick={() => {
+              paginateNumber(number);
+              buttonColor(number);
+            }}
           >
             {number}
           </Button>
