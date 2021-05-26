@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import PaginatePosts from "../Components/jobs/PaginatePosts";
 import PaginatePostCounter from "../Components/jobs/PaginatePostCounter";
 import { FormControl, InputLabel, Select, MenuItem } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 function Jobs() {
   const [jobs, setJobs] = useState([]);
@@ -73,32 +74,53 @@ function Jobs() {
     setJobs(setNewLocation);
   };
 
+  const useStyles = makeStyles({
+    mainContainer: {
+      display: "flex",
+      height: "100%vh",
+      width: "100%",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    locationSearch: {
+      display: "flex",
+      width: "100%",
+      height: 100,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: "whitesmoke",
+    },
+    underLocationText: {
+      display: "flex",
+      width: "100%",
+      height: 40,
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: "whitesmoke",
+    },
+    pageBody: {
+      display: "flex",
+      flexDirection: "column",
+      width: "100%",
+      minHeight: "100%",
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: "whitesmoke",
+      flexGrow: 1,
+    },
+  });
+
+  const classes = useStyles();
+
   return (
-    <div
-      style={{
-        display: "flex",
-        height: "100%vh",
-        width: "100%",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          width: "100%",
-          height: 100,
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "whitesmoke",
-        }}
-      >
+    <div className={classes.mainContainer}>
+      <div className={classes.locationSearch}>
         <FormControl style={{ width: 200 }}>
-          <InputLabel id="demo-simple-select-label">Location</InputLabel>
+          <InputLabel id='demo-simple-select-label'>Location</InputLabel>
           <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
+            labelId='demo-simple-select-label'
+            id='demo-simple-select'
             value={locationInput}
             onChange={handleChange}
           >
@@ -114,30 +136,10 @@ function Jobs() {
         </FormControl>
         <span style={{ marginLeft: 40 }}>Page: {currentPage}</span>
       </div>
-      <div
-        style={{
-          display: "flex",
-          width: "100%",
-          height: 40,
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "whitesmoke",
-        }}
-      >
+      <div className={classes.underLocationText}>
         Jobs scraped from available APIs
       </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          width: "100%",
-          minHeight: "100%",
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "whitesmoke",
-          flexGrow: 1,
-        }}
-      >
+      <div className={classes.pageBody}>
         <PaginatePosts jobs={currentJob} loading={loading} />
         <PaginatePostCounter
           jobsPerPage={jobsPerPage}

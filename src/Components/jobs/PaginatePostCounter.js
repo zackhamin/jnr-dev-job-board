@@ -1,9 +1,9 @@
 import { Button } from "@material-ui/core";
 import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
 
 const PaginatePostCounter = ({ jobsPerPage, totalPosts, paginate }) => {
   const pageNumbers = [];
-  const [clickButtonColor, setClickButtonColor] = useState(0);
 
   for (let i = 1; i <= Math.ceil(totalPosts / jobsPerPage); i++) {
     pageNumbers.push(i);
@@ -11,34 +11,30 @@ const PaginatePostCounter = ({ jobsPerPage, totalPosts, paginate }) => {
 
   const paginateNumber = number => {
     paginate(number);
-    console.log(number);
   };
 
-  const buttonColor = number => {
-    return setClickButtonColor(true);
-  };
+  const useStyles = makeStyles({
+    pageButtonsContainer: {
+      display: "flex",
+      fontSize: 20,
+      justifyContent: "center",
+      flexWrap: "wrap",
+      minWidth: 200,
+      minHeight: 100,
+    },
+  });
+  const classes = useStyles();
 
   return (
-    <div
-      style={{
-        display: "flex",
-        fontSize: 20,
-        justifyContent: "center",
-        flexWrap: "wrap",
-        minWidth: 200,
-        minHeight: 100,
-      }}
-    >
+    <div className={classes.pageButtonsContainer}>
       {pageNumbers.map(number => (
         <div>
           <Button
             key={number}
             style={{ margin: 5 }}
-            variant="contained"
-            color={clickButtonColor ? "primary" : "secondary"}
+            variant='contained'
             onClick={() => {
               paginateNumber(number);
-              buttonColor(number);
             }}
           >
             {number}
