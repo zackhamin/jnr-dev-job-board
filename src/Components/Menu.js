@@ -15,33 +15,39 @@ function menu() {
         marginBottom: 25,
       }}
     >
-      <Link to="/" style={{ textDecoration: "none" }}>
+      <Link to='/' style={{ textDecoration: "none" }}>
         <Button>
           <strong style={{ color: "black" }}>Home</strong>
         </Button>
       </Link>
 
-      <Link to="/Jobs" style={{ textDecoration: "none" }}>
+      <Link to='/Jobs' style={{ textDecoration: "none" }}>
         <Button>
           <strong style={{ color: "black" }}>Jobs</strong>
         </Button>
       </Link>
 
-      <Link to="/DirectJobs" style={{ textDecoration: "none" }}>
+      <Link to='/DirectJobs' style={{ textDecoration: "none" }}>
         <Button>
           <strong style={{ color: "black" }}>Direct Jobs</strong>
         </Button>
       </Link>
 
-      <Link to="/Resources" style={{ textDecoration: "none" }}>
+      <Link to='/Resources' style={{ textDecoration: "none" }}>
         <Button>
           <strong style={{ color: "black" }}>Resources</strong>
         </Button>
       </Link>
 
-      <Link to="/Admin" style={{ textDecoration: "none" }}>
+      <Link to='/Admin' style={{ textDecoration: "none" }}>
         <Button style={{ marginLeft: 100 }}>
           <strong style={{ color: "black" }}>Admin</strong>
+        </Button>
+      </Link>
+
+      <Link to='/Upload' style={{ textDecoration: "none" }}>
+        <Button style={{ marginLeft: 100 }}>
+          <strong style={{ color: "black" }}>Upload CV</strong>
         </Button>
       </Link>
     </div>

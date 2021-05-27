@@ -8,6 +8,7 @@ import Footer from "./Components/Footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import DirectJobs from "./Pages/DirectJobs";
 import Admin from "./Components/directJobs/jobAdminPage";
+import Upload from "./Pages/UploadCV";
 
 function App() {
   return (
@@ -17,13 +18,14 @@ function App() {
       </div>
 
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/About" component={About} />
-        <Route exact path="/Jobs" component={Jobs} />
-        <Route exact path="/DirectJobs" component={DirectJobs} />
-        <Route exact path="/Resources" component={Resources} />
-        <Route exact path="/Admin" component={Admin} />
-        <Route exact path="/Contact" component={Contact} />
+        <Route exact path='/' component={Home} />
+        <Route exact path='/About' component={About} />
+        <Route exact path='/Jobs' component={Jobs} />
+        <Route exact path='/DirectJobs' component={DirectJobs} />
+        <Route exact path='/Resources' component={Resources} />
+        <Route exact path='/Admin' component={Admin} />
+        <Route exact path='/Contact' component={Contact} />
+        <Route exact path='/Upload' component={Upload} />
       </Switch>
 
       <div>

@@ -25,24 +25,35 @@ const PaginatePostCounter = ({ jobsPerPage, totalPosts, paginate }) => {
   });
   const classes = useStyles();
 
-  return (
-    <div className={classes.pageButtonsContainer}>
-      {pageNumbers.map(number => (
-        <div>
-          <Button
-            key={number}
-            style={{ margin: 5 }}
-            variant='contained'
-            onClick={() => {
-              paginateNumber(number);
-            }}
-          >
-            {number}
-          </Button>
-        </div>
-      ))}
-    </div>
-  );
+  const renderPaginationButton = () => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [buttonColor, setButtonColor] = useState("primary");
+    const onButtonClick = number => {
+      paginateNumber(number);
+      setButtonColor("secondary");
+    };
+    return (
+      <div className={classes.pageButtonsContainer}>
+        {pageNumbers.map(number => (
+          <div>
+            <Button
+              key={number}
+              style={{ margin: 5 }}
+              variant='contained'
+              color={buttonColor}
+              onClick={() => {
+                onButtonClick(number);
+              }}
+            >
+              {number}
+            </Button>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+  return <span>{renderPaginationButton()}</span>;
 };
 
 export default PaginatePostCounter;
